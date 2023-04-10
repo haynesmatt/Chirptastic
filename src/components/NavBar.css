@@ -7,28 +7,25 @@
     align-items: center;
 }
 
-a {
+li {
+    display: inline-block;
     padding: 32px;
     font-size: large;
     font-weight: bolder;
 }
 
-/* unvisited link */
-a:link {
+ul li a:link {
     color: #fff3b0;
 }
 
-/* visited link */
-a:visited {
+ul li a:visited {
     color: #fff3b0;
 }
 
-/* mouse over link */
-a:hover {
+ul li a:active {
     color: #fff3b0;
 }
 
-/* selected link */
-a:active {
-    color: #fff3b0;
+ul li a:hover {
+    color: #fffff0;
 }

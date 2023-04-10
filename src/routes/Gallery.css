@@ -1,0 +1,11 @@
+Gallery {
+    background-color: #9e2a2b;
+    color: #9e2a2b;
+    height: fit-content;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}

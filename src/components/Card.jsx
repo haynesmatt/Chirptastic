@@ -1,10 +1,8 @@
-import { useState } from 'react';
 import AngryBirdTransparent from '../assets/angry-bird-transparent.webp';
 import './Card.css';
+import { Link } from "react-router-dom";
 
 function Card(props) {
-  const [id, setID] = useState(0);
-
   return (
     <div className="Card">
       
@@ -26,8 +24,13 @@ function Card(props) {
       </div>
 
       <div className='button-container'>
-        <button className='edit-button'>Edit Bird</button>
+
+        <Link to={`/edit/${props.id}`}>
+          <button className='edit-button'>Edit Bird</button>
+        </Link>
+
         <button className='delete-button'>Delete Bird</button>
+
       </div>
 
     </div>

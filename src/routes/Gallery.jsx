@@ -32,7 +32,7 @@ function Gallery() {
       <h1>Your Chirptastic Gallery</h1>
       <div className="cards">
         {posts.map(post => (
-          <Card name={post.name} color={post.color} double_damage={post.double_damage} />
+          <Card name={post.name} color={post.color} double_damage={post.double_damage} id={post.id}/>
         ))}
       </div>
     </div>

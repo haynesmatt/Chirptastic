@@ -1,8 +1,11 @@
 import './Forms.css'
 import { supabase } from '../client'
 import { useState } from 'react';
+import { useParams } from "react-router-dom";
 
-function Forms() {
+function EditForm() {
+
+    let id = useParams().id;
 
     const [post, setPost] = useState({
         name: '',
@@ -26,14 +29,14 @@ function Forms() {
         }));
     }
 
-    const createPost = async (event) => {
+    const updatePost = async (event) => {
 
         event.preventDefault();
     
         await supabase
             .from('Posts')
-            .insert({ name: post.name, double_damage: post.double_damage, color: post.color })
-            .select();
+            .update({ name: post.name, double_damage: post.double_damage, color: post.color })
+            .eq('id', id);
     
         window.location = '/';
     }
@@ -71,10 +74,10 @@ function Forms() {
                 </form>
             </div>
 
-            <input type="submit" value="Submit" className="action-button" onClick={createPost}/>
+            <input type="submit" value="Submit" className="action-button" onClick={updatePost}/>
 
         </div>
     )
 }
 
-export default Forms
+export default EditForm

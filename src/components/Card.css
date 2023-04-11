@@ -9,7 +9,7 @@ Card {
 
 .Card {
     margin: 50px 75px;
-    background-color: olivedrab;
+    background-color: #606c38;
     width: 300px;
     height: 450px;
     text-align: center;
@@ -23,11 +23,8 @@ Card {
 
 .trait {
     padding: 0 0 0 5px;
-    color: darkred;
+    color: #dda15e;
     text-align: center;
-}
-
-.button-container {
 }
 
 button {

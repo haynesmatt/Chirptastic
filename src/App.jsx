@@ -1,11 +1,9 @@
-import { useState } from 'react';
 import './App.css';
 import AngryBirdsMultiple from './assets/angry-birds-multiple.png';
 import NavBar from './components/NavBar'
 import Forms from './components/Forms'
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
     <div className="App">

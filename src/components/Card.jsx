@@ -22,7 +22,9 @@ function Card(props) {
   return (
     <div className="Card">
       
-      <img src={AngryBirdTransparent} alt="Angry Bird" width="150px"/>
+      <Link to={`/details/${props.id}`}>
+        <img src={AngryBirdTransparent} alt="Angry Bird" width="150px"/>
+      </Link>
 
       <div className='property'>
         <h3>Name of Bird: </h3>

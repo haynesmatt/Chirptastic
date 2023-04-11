@@ -2,7 +2,7 @@ import { useState } from 'react';
 import AngryBirdTransparent from '../assets/angry-bird-transparent.webp';
 import './Card.css';
 
-function Card() {
+function Card(props) {
   const [id, setID] = useState(0);
 
   return (
@@ -12,20 +12,23 @@ function Card() {
 
       <div className='property'>
         <h3>Name of Bird: </h3>
-        <h3 className='trait'>Robin</h3>
+        <h3 className='trait'>{props.name}</h3>
       </div>
 
       <div className='property'>
         <h3>Color of Bird: </h3>
-        <h3 className='trait'>Red</h3>
+        <h3 className='trait'>{props.color}</h3>
       </div>
       
       <div className='property'>
         <h3>Double Damage on </h3>
-        <h3 className='trait'>Wood</h3>
+        <h3 className='trait'>{props.double_damage}</h3>
       </div>
 
-      <button>Edit Bird</button>
+      <div className='button-container'>
+        <button className='edit-button'>Edit Bird</button>
+        <button className='delete-button'>Delete Bird</button>
+      </div>
 
     </div>
   )

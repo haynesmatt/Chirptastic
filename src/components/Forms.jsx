@@ -1,49 +1,84 @@
-  // Name: ____
-  // Double Damage: Pigs, Wood, Brick, Metal
-  // Color: Red, Yellow, Blue, Green
-
 import './Forms.css'
+import { supabase } from '../client'
+import { useState } from 'react';
 
-const handleOnSubmit = (e) => {
-    e.preventDefault()
-    props.onSubmit(true)
-}
+// to continue where i left off, i need to display data from the database to now to to a post card and load each post card (prev + next) with the spread operator
 
 function Forms() {
 
-  return (
-    <div className="Forms">
+    const [post, setPost] = useState({
+        name: '',
+        double_damage: '',
+        color: ''
+      });
 
-        <form className="nameForm" onSubmit={handleOnSubmit}>
-            <h3>Name:</h3>
-            <input type="text" name="name" />
-            {/* value={props.postForm.name} onChange={props.handleChange} */}
-            <input type="submit" value="Submit" className="action-button" />
-        </form>
+    const handleTextInputInput = (event) => {
+        const { value } = event.target;
+        setPost(prevPost => ({
+            ...prevPost,
+            name: value
+          }));
+    }
 
-        <form className="doubleDamageForm" onSubmit={handleOnSubmit}>
-            <h3>Double Damage:</h3>
-            <select id="my-select" name="my-select">
-                <option value="option0">Select Option</option>
-                <option value="option1">Wood</option>
-                <option value="option2">Brick</option>
-                <option value="option3">Metal</option>
-            </select>
-        </form>
+    const handleOptionChange = (event) => {
+        const { name, value } = event.target;
+        setPost(prevPost => ({
+          ...prevPost,
+          [name]: value
+        }));
+    }
 
-        <form className="colorForm" onSubmit={handleOnSubmit}>
-            <h3>Color:</h3>
-            <select id="my-select" name="my-select">
-                <option value="option0">Select Option</option>
-                <option value="option1">Red</option>
-                <option value="option2">Yellow</option>
-                <option value="option3">Blue</option>
-                <option value="option3">Green</option>
-            </select>
-        </form>
+    const createPost = async (event) => {
 
-    </div>
-  )
+        event.preventDefault();
+    
+        await supabase
+            .from('Posts')
+            .insert({ name: post.name, double_damage: post.double_damage, color: post.color })
+            .select();
+    
+        window.location = '/';
+    }
+
+
+
+    return (
+        <div className="Forms">
+
+            <div className='forms'>
+
+                <form className="nameForm">
+                    <h3>Name:</h3>
+                    <input type="text" name="name" onChange={handleTextInputInput}/>
+
+                </form>
+
+                <form className="doubleDamageForm">
+                    <h3>Double Damage:</h3>
+                    <select id="double_damage" name="double_damage" onChange={handleOptionChange}>
+                        <option value="select_option">Select Option</option>
+                        <option value="Wood">Wood</option>
+                        <option value="Brick">Brick</option>
+                        <option value="Metal">Metal</option>
+                    </select>
+                </form>
+
+                <form className="colorForm">
+                    <h3>Color:</h3>
+                    <select id="color" name="color" onChange={handleOptionChange}>
+                        <option value="select_option">Select Option</option>
+                        <option value="Red">Red</option>
+                        <option value="Yellow">Yellow</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Green">Green</option>
+                    </select>
+                </form>
+            </div>
+
+            <input type="submit" value="Submit" className="action-button" onClick={createPost}/>
+
+        </div>
+    )
 }
 
 export default Forms

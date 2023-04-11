@@ -14,7 +14,6 @@ function App() {
       <img src={AngryBirdsMultiple} alt="Angry Birds" width="200px"/>
       <h2>Create a new Angry Bird below:</h2>
       <Forms />
-      <button>Create Bird</button>
     </div>
   )
 }
